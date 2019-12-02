@@ -127,13 +127,14 @@ fun getMSGS(): Boolean {
         )
         if (response.statusCode == 201) {
             println("Success")
-            println(response.jsonObject)
         } else if (response.statusCode == 401) {
             println("token expired, updating...")
             updateToken()
+            getMSGS()
         } else if (response.statusCode == 400) {
             println("number not provisioned, provisioning....")
             provisionNumer()
+            getMSGS()
         } else if (response.statusCode == 200) {
             println(response.statusCode)
             println(response.jsonObject)

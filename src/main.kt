@@ -5,6 +5,7 @@ fun main(): Unit {
    // retrieveToken();
    // retrieveNumber();
     //updateToken();
+    // TODO fix the logic with the provisioning and token updating functions. Implement return values.
     while(getMSGS()) {
         println("Getting messages.")
     }

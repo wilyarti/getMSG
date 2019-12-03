@@ -1,13 +1,18 @@
 package net.opens3
 
+import java.util.regex.Pattern.UNIX_LINES
+
 fun main(): Unit {
-    println("Hello world");
-   // retrieveToken();
-   // retrieveNumber();
-    //updateToken();
-    // TODO fix the logic with the provisioning and token updating functions. Implement return values.
-    while(getMSGS()) {
+    while(true) {
         println("Getting messages.")
+        val msg = getMSG()
+        if (msg != null) {
+            println(msg.status)
+            if (!sendMsgSimple(OUR_NUMBER, "MSG(${msg?.senderAddress})\n${msg?.message}")) {
+                println("Forwarding message failed.")
+            }
+        }
+        Thread.sleep(1*1000*60*5)
     }
     //test()
 }
